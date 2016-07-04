@@ -1,9 +1,12 @@
-var controllers = require('./controllers');
+var controllers = require('./controllers.js');
 var router = require('express').Router();
+
+// router.get('/', function(req, res) {
+//   console.log('i have arrived');
+//   res.send('Birds home page')
+// });
 
 router.get('/names', controllers.names.get);
 router.post('/names', controllers.names.post);
-// router.get('/places', controllers.places.get);
-// router.post('/places', controllers.places.post);
 
 module.exports = router;

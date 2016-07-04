@@ -3,6 +3,7 @@ var db = require('./database.js');
 module.exports = {
   names: {
     post: function(params, callback) {
+      console.log('controllers post working');
       var sqlInstruction = "INSERT INTO names (name) value (?)"
       db.query(sqlInstruction, params, function(err, results) {
         if (err) {

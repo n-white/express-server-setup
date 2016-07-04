@@ -1,5 +1,6 @@
 var models = require('./models');
 
+
 module.exports = {
 
   names: {
@@ -13,7 +14,13 @@ module.exports = {
       })
     },
     post: function(req, res) {
-      var params = [req.body.name];
+      var tempParam;
+      req.on('data', function(data) {
+        tempParam = JSON.parse(data.toString());
+        console.log(tempParam);
+
+      });
+      var params = [tempParam.name];
       models.names.post(params, function(err, results) {
         if (err) {
           console.log('controllers names post: ', err);
