@@ -5,8 +5,10 @@ var router = require('express').Router();
 //   console.log('i have arrived');
 //   res.send('Birds home page')
 // });
-
-router.get('/names', controllers.names.get);
-router.post('/names', controllers.names.post);
+router.route('/names')
+	.get(controllers.names.get);
+	// .get(controllers.retrieveNames)
+	// .get(nameController.retrieveAll)
+	.post(controllers.names.post);
 
 module.exports = router;
