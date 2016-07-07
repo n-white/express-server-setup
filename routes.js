@@ -6,9 +6,7 @@ var router = require('express').Router();
 //   res.send('Birds home page')
 // });
 router.route('/names')
-	.get(controllers.names.get);
-	// .get(controllers.retrieveNames)
-	// .get(nameController.retrieveAll)
+	.get(controllers.names.get)
 	.post(controllers.names.post);
 
 module.exports = router;
