@@ -1,26 +1,30 @@
 var bluebird = require('bluebird');
 var parser = require('body-parser');
-var nameFields = ['name'];
-var placeFields = ['place'];
+// var nameFields = ['name'];
+// var placeFields = ['place'];
 
-var db = require('./database.js');
+// var db = require('./database.js');
 
 module.exports = {
 
-  names: {
-    get: function(req, res) {
-      db.Name.findAll()
-        .complete(function(error, results) {
-          res.json(results);
-        });
+  article: {
+
+    postArticle: function(req, res) {
+      db.Fbooks.findOrCreate({where: {article: req.body.title, likes: req.body.likes, loves: req.body.loves}}).then(function(data) {
+        res.send(data);
+      })      
     },
 
-    post: function(req, res) {
-      console.log(req.body.first);
-      db.Name.findOrCreate({where: {first: req.body.first, last: req.body.last}})
-        .then(function(answer) {
-          console.log(answer);
-        }) 
+    getArticle: function(req, res) {
+      console.log(req.body);
+      res.send(req.body);
+
+      // console.log(req.body);
+      // db.Fbooks.findAll({where: {article: {like: '%' + req.body.title + '%'}}}).then(function(data) {
+      //   console.log(data)
+      // })
     }
+
   }
+
 }
